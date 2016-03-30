@@ -23,7 +23,7 @@ public class CrowdPointer {
         HashMap<Integer, Integer> countList = new HashMap<>();
         for (Point point : pois) {
             int alfa = (int) Math.toDegrees(Math.atan2(point.x, point.y));
-            alfa = (alfa >= 0) ? alfa : 360 + alfa;
+            alfa = fixDegree(alfa);
             if (list.containsKey(alfa)) {
                 list.get(alfa).add(point);
                 countList.put(alfa, countList.get(alfa) + 1);
@@ -43,19 +43,25 @@ public class CrowdPointer {
         int index = 0;
         for (int i = 0; i < 360; i++) {
             current -= countList.containsKey(i) ? countList.get(i) : 0;
-            current += countList.containsKey(i + aperture) ? countList.get(i + aperture) : 0;
+            int j = fixDegree(i + aperture);
+            current += countList.containsKey(j) ? countList.get(j) : 0;
             if (current > max) {
                 max = current;
                 index = i;
             }
         }
         result.alfa = index;
-        for (int i = index; i <= index+aperture; i++) {
-           if( list.containsKey(i) ){
-               result.pointList.addAll(list.get(i));
-           }
+        for (int i = index; i <= index + aperture; i++) {
+            if (list.containsKey(fixDegree(i))) {
+                result.pointList.addAll(list.get(fixDegree(i)));
+            }
         }
-         return result;
+        return result;
+    }
+
+    private int fixDegree(int i) {
+        i = i >= 0 ? i : 360 + i;
+        return i < 360 ? i : i - 360;
     }
 
 }

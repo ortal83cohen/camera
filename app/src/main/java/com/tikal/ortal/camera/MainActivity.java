@@ -115,13 +115,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private ArrayList<Point> getDummyArray() {
         ArrayList<Point> array = new ArrayList<>();
+        array.add(new Point(4,44));
+        array.add(new Point(4,44));
         array.add(new Point(44,44));
         array.add(new Point(77,77));
         array.add(new Point(44,-44));
         array.add(new Point(434,-434));
-        array.add(new Point(41,-44));
         array.add(new Point(44,-47));
         array.add(new Point(-44,44));
+        array.add(new Point(-4,44));
+        array.add(new Point(-4,44));
         array.add(new Point(-44,-44));
         return array;
     }
