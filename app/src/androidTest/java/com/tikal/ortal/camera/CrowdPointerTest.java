@@ -45,19 +45,22 @@ public class CrowdPointerTest {
         array.add(new Point(-4, 44));
         array.add(new Point(-44, -44));
 
-        CrowdPointer.Result result = mCrowdPointer.findCrowd(array, 13);
-        CrowdPointer.Result expectedResult =  new CrowdPointer.Result();
-        expectedResult.alfa =352;
-        expectedResult.pointList =new ArrayList<>();
-        expectedResult.pointList.add(new Point(-4,44));
-        expectedResult.pointList.add(new Point(-4,44));
-        expectedResult.pointList.add(new Point(4,44));
-        expectedResult.pointList.add(new Point(4,44));
+        CrowdPointer.Result expectedResult = new CrowdPointer.Result();
+        expectedResult.alfa = 352;
+        expectedResult.pointList = new ArrayList<>();
+        expectedResult.pointList.add(new Point(-4, 44));
+        expectedResult.pointList.add(new Point(-4, 44));
+        expectedResult.pointList.add(new Point(4, 44));
+        expectedResult.pointList.add(new Point(4, 44));
 
+        makeTest(array, 13, expectedResult);
+    }
+
+    private void makeTest(ArrayList<Point> array, int aperture,
+            CrowdPointer.Result expectedResult) {
+        CrowdPointer.Result result = mCrowdPointer.findCrowd(array,aperture );
         Assert.assertEquals(expectedResult.alfa, result.alfa);
-        Assert.assertEquals(expectedResult.pointList.size(), result.pointList.size());
-        for (int i=0;i<expectedResult.pointList.size();i++){
-            Assert.assertEquals(expectedResult.pointList.get(i), result.pointList.get(i));
-        }
+        Assert.assertArrayEquals(expectedResult.pointList.toArray(), result.pointList.toArray());
+
     }
 }
