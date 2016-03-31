@@ -97,10 +97,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onResume() {
         super.onResume();
 
-        CrowdPointer crowdPointer = new CrowdPointer();
-
-        crowdPointer.findCrowd(getDummyArray(),13);
-
         mPreview = new CameraPreview(this, 0);
         RelativeLayout.LayoutParams previewLayoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
@@ -111,22 +107,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager.registerListener(this,
                 sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
                 SensorManager.SENSOR_DELAY_NORMAL);
-    }
-
-    private ArrayList<Point> getDummyArray() {
-        ArrayList<Point> array = new ArrayList<>();
-        array.add(new Point(4,44));
-        array.add(new Point(4,44));
-        array.add(new Point(44,44));
-        array.add(new Point(77,77));
-        array.add(new Point(44,-44));
-        array.add(new Point(434,-434));
-        array.add(new Point(44,-47));
-        array.add(new Point(-44,44));
-        array.add(new Point(-4,44));
-        array.add(new Point(-4,44));
-        array.add(new Point(-44,-44));
-        return array;
     }
 
     @Override

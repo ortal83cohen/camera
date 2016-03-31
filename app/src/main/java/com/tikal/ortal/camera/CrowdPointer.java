@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 public class CrowdPointer {
 
-    public class Result {
+    static public class Result {
 
         public int alfa = 0;
 
@@ -60,8 +60,12 @@ public class CrowdPointer {
     }
 
     private int fixDegree(int i) {
-        i = i >= 0 ? i : 360 + i;
-        return i < 360 ? i : i - 360;
+        if (i < 0) {
+            return 360 + i;
+        } else if (i >= 360) {
+            return i - 360;
+        }
+        return i;
     }
 
 }
