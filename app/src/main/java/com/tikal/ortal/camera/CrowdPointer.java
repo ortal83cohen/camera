@@ -1,7 +1,5 @@
 package com.tikal.ortal.camera;
 
-import android.graphics.Point;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 

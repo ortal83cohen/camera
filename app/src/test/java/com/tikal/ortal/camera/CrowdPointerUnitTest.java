@@ -1,21 +1,22 @@
 package com.tikal.ortal.camera;
 
-import org.junit.Assert;
+
+
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import android.support.test.runner.AndroidJUnit4;
+
 
 import java.util.ArrayList;
 
-/**
- * Created by ortalcohen on 31/03/2016.
- */
-@RunWith(AndroidJUnit4.class)
-public class CrowdPointerTest {
+import static org.junit.Assert.*;
 
+/**
+ * To work on unit tests, switch the Test Artifact in the Build Variants view.
+ */
+public class CrowdPointerUnitTest {
     private CrowdPointer mCrowdPointer;
+
 
     @Before
     public void setUp() {
@@ -25,7 +26,7 @@ public class CrowdPointerTest {
     @Test
     public void objectIsNotNull() {
 
-        Assert.assertNotNull(mCrowdPointer);
+        assertNotNull(mCrowdPointer);
     }
 
     @Test
@@ -56,9 +57,9 @@ public class CrowdPointerTest {
 
     private void makeTest(ArrayList<Point> array, int aperture,
             CrowdPointer.Result expectedResult) {
-        CrowdPointer.Result result = mCrowdPointer.findCrowd(array, aperture);
-        Assert.assertEquals(expectedResult.alfa, result.alfa);
-        Assert.assertArrayEquals(expectedResult.pointList.toArray(), result.pointList.toArray());
+        CrowdPointer.Result result = mCrowdPointer.findCrowd(array,aperture );
+        assertEquals(expectedResult.alfa, result.alfa);
+        assertArrayEquals(expectedResult.pointList.toArray(), result.pointList.toArray());
 
     }
 }
